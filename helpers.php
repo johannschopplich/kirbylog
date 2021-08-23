@@ -27,7 +27,10 @@ if (!function_exists('kirbylog')) {
             'EMERGENCY'
         ];
 
-        if (!in_array($level, option('johannschopplich.kirbylog.levels', $defaultLevels))) {
+        if (
+            !in_array($level, option('johannschopplich.kirbylog.levels', $defaultLevels)) &&
+            option('debug')
+        ) {
             throw new UnexpectedValueException("Level \"{$level}\" is not part of the logging levels described");
         }
 
