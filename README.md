@@ -76,7 +76,7 @@ Generated log file:
 ## Alternatives
 
 - [bnomei/kirby3-monolog](https://github.com/bnomei/kirby3-monolog) – Use Monolog to log data to files, databases, create notifications etc.
-- [bvdputte/kirby-log](https://github.com/bvdputte/kirby-log) – Another logger, wrapper the [KLogger](https://github.com/katzgrau/KLogger) library.
+- [bvdputte/kirby-log](https://github.com/bvdputte/kirby-log) – Another logger in the Kirby-sphere, wrapping the [KLogger](https://github.com/katzgrau/KLogger) library.
 
 ## License
 

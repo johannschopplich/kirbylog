@@ -28,8 +28,8 @@ if (!function_exists('kirbylog')) {
         ];
 
         if (
-            !in_array($level, option('johannschopplich.kirbylog.levels', $defaultLevels)) &&
-            option('debug')
+            option('debug') &&
+            !in_array($level, option('johannschopplich.kirbylog.levels', $defaultLevels))
         ) {
             throw new UnexpectedValueException("Level \"{$level}\" is not part of the logging levels described");
         }
