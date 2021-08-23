@@ -2,13 +2,6 @@
 
 > The most simple, Kirby-esque way to log content to file.
 
-## Key features
-
-- 🪃 Global `kirbylog` helper usable anywhere
-- 💬 Arrays will be converted to JSON
-- 🧩 No external library, based solely on Kirby internals
-- 🔢 Supports logging levels
-
 Most of the times, I just want to log some string or array to a file. That's what this plugin does. The given input:
 
 ```php
@@ -21,6 +14,13 @@ kirbylog('Something happened');
 ```log
 [2021-08-23 09:28:04] INFO Something happened
 ```
+
+## Key features
+
+- 🪃 Global `kirbylog` helper usable anywhere
+- 💬 Arrays will be converted to JSON
+- 🧩 No external library, based solely on Kirby internals
+- 🔢 Supports logging levels
 
 ## Installation
 
