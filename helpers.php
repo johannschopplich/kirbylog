@@ -10,9 +10,10 @@ if (!function_exists('kirbylog')) {
      * @param string|int|array $content Can be a string, integer or an array. Arrays will be converted to JSON.
      * @return void
      */
-    function kirbylog($content, string $level = 'INFO'): void
+    function kirbylog($content, string $level = 'info'): void
     {
-        $logLevels = [
+        $level = strtoupper($level);
+        $defaultLevels = [
             'DEBUG',
             'INFO',
             'NOTICE',
@@ -23,7 +24,7 @@ if (!function_exists('kirbylog')) {
             'EMERGENCY'
         ];
 
-        if (!in_array($level, option('johannschopplich.kirbylog.levels', $logLevels))) {
+        if (!in_array($level, option('johannschopplich.kirbylog.levels', $defaultLevels))) {
             throw new UnexpectedValueException("Level \"{$level}\" is not part of the logging levels described");
         }
 

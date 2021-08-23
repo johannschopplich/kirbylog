@@ -76,6 +76,14 @@ final class LogTest extends TestCase
     public function testCustomLogLevel(): void
     {
         $content = 'something went wrong';
+        $level = 'error';
+        kirbylog($content, $level);
+        $this->assertLastLogLine($content, $level);
+    }
+
+    public function testCustomLogLevelCase(): void
+    {
+        $content = 'something went wrong';
         $level = 'ERROR';
         kirbylog($content, $level);
         $this->assertLastLogLine($content, $level);
@@ -86,7 +94,7 @@ final class LogTest extends TestCase
         $this->expectException(UnexpectedValueException::class);
 
         $content = 'generic message';
-        $level = 'QUESTIONABLE';
+        $level = 'NOT_A_LEVEL';
         kirbylog($content, $level);
     }
 }

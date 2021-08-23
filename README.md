@@ -50,10 +50,10 @@ kirbylog('Log this to file');
 
 ### Logging level
 
-Pass the logging level of your choice as the second parameter. By default, content will be logged with the `INFO` level. This plugin uses logging levels described by [RFC 5424](http://tools.ietf.org/html/rfc5424). Of course, you can tailor them to your needs.
+Pass the logging level of your choice as the second parameter (upper or lower case is irrelevant). By default, content will be logged with the `INFO` level. This plugin uses logging levels described by [RFC 5424](http://tools.ietf.org/html/rfc5424). Of course, you can tailor them to your needs.
 
 ```php
-kirbylog($response->code(), 'ERROR);
+kirbylog($response->code(), 'error');
 ```
 
 Generated log file:
@@ -75,6 +75,7 @@ Generated log file:
 ## Alternatives
 
 - [bnomei/kirby3-monolog](https://github.com/bnomei/kirby3-monolog) – Use Monolog to log data to files, databases, create notifications etc.
+- [bvdputte/kirby-log](https://github.com/bvdputte/kirby-log) – Another logger, wrapper the [KLogger](https://github.com/katzgrau/KLogger) library.
 
 ## License
 
