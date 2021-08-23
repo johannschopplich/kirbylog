@@ -19,7 +19,7 @@ kirbylog('Something happened');
 
 - 🪃 Global `kirbylog` helper usable anywhere
 - 💬 Arrays will be converted to JSON
-- 🧩 No external library, based solely on Kirby internals
+- 🧩 Dependency-free, based solely on Kirby internals
 - 🔢 Supports logging levels
 
 ## Installation
