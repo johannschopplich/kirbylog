@@ -40,7 +40,7 @@ git submodule add https://github.com/johannschopplich/kirbylog.git site/plugins/
 composer require johannschopplich/kirbylog
 ```
 
-## Setup & Usage
+## Usage
 
 This plugin registers a global `kirbylog` function, callable anywhere.
 
