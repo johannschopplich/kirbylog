@@ -25,7 +25,7 @@
     "phpunit/phpunit": "^9"
   },
   "files": [
-    "helpers.php"
+    "src/helpers.php"
   ],
   "scripts": {
     "dist": "composer install --no-dev --optimize-autoloader",

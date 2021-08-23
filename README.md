@@ -71,7 +71,7 @@ Generated log file:
 | `dir` | `fn () => kirby()->root('logs')` | `string` or `function` | Root directory for your logs. Note: Wrap `kirby()` calls in a function, because Kirby hasn't initialized yet. |
 | `filename` | `strftime('%Y-%m-%d') . '.log'` | `string` | Filename to write loggable content to.
 | `defaultLevel` | `INFO` | `string` | Default logging level to use.
-| `levels` | [See source](https://github.com/johannschopplich/kirbylog/blob/main/index.php#L9) | `array` | List of logging levels. By default, `kirbylog` supports the logging levels described by [RFC 5424](http://tools.ietf.org/html/rfc5424) |
+| `levels` | [See source](https://github.com/johannschopplich/kirbylog/blob/main/src/helpers.php#L19) | `array` | List of logging levels. By default, `kirbylog` supports the logging levels described by [RFC 5424](http://tools.ietf.org/html/rfc5424) |
 
 ## Alternatives
 

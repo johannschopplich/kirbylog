@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-require dirname(__DIR__) . '/helpers.php';
+require dirname(__DIR__) . '/src/helpers.php';
 
 use Kirby\Cms\App;
 use Kirby\Data\Json;
@@ -18,6 +18,7 @@ final class LogTest extends TestCase
     {
         $this->kirby = new App([
             'options' => [
+                'debug' => true,
                 'johannschopplich' => [
                     'kirbylog' => [
                         'filename' => 'test.log'
