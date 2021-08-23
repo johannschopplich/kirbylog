@@ -35,7 +35,7 @@ final class LogTest extends TestCase
         return $data[count($data) - 1];
     }
 
-    private function assertLastLogLine($content, string $level = 'INFO'): void
+    private function assertLastLogLine($content, string $level = 'info'): void
     {
         $result = str_ends_with(
             rtrim($this->getLastLogLine(), "\n"),
@@ -47,8 +47,7 @@ final class LogTest extends TestCase
 
     public function testLogExists(): void
     {
-        kirbylog('init');
-
+        kirbylog('first test');
         $this->assertTrue(F::exists($this->logPath));
     }
 
