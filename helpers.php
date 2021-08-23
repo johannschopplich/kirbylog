@@ -7,7 +7,7 @@ if (!function_exists('kirbylog')) {
     /**
      * Logs content to file
      *
-     * @param string|int|array $content Either a string or an array. Arrays will be converted to JSON.
+     * @param string|int|array $content Can be a string, integer or an array. Arrays will be converted to JSON.
      * @return void
      */
     function kirbylog($content, string $level = 'INFO'): void
