@@ -2,7 +2,7 @@
 
 > The most simple, Kirby-esque way to log content to file.
 
-Most of the times, I just want to log some string or array to a file. That's what this plugin does. The given input:
+Most of the time, I just want to log some string or array to a file. That's what this plugin does. The given input:
 
 ```php
 // Anywhere in your code
@@ -48,7 +48,7 @@ This plugin registers a global `kirbylog` function, callable anywhere.
 kirbylog('Log this to file');
 ```
 
-### Logging Level
+### Logging level
 
 Pass the logging level of your choice as the second parameter. By default, content will be logged with the `INFO` level. This plugin uses logging levels described by [RFC 5424](http://tools.ietf.org/html/rfc5424). Of course, you can tailor them to your needs.
 

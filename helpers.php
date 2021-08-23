@@ -24,7 +24,7 @@ if (!function_exists('kirbylog')) {
         ];
 
         if (!in_array($level, option('johannschopplich.kirbylog.levels', $logLevels))) {
-            throw new UnexpectedValueException("Level \"$level\" is not part of the logging levels described");
+            throw new UnexpectedValueException("Level \"{$level}\" is not part of the logging levels described");
         }
 
         if (is_array($content) || is_object($content)) {
