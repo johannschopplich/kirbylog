@@ -6,15 +6,6 @@
     'options' => [
         'dir' => fn () => kirby()->root('logs'),
         'filename' => strftime('%Y-%m-%d') . '.log',
-        'levels' => [
-            'DEBUG',
-            'INFO',
-            'NOTICE',
-            'WARNING',
-            'ERROR',
-            'CRITICAL',
-            'ALERT',
-            'EMERGENCY'
-        ]
+        'defaultLevel' => 'INFO'
     ]
 ]);

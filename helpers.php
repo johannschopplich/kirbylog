@@ -11,9 +11,11 @@ if (!function_exists('kirbylog')) {
      * @param string $level Case-insensitive logging level.
      * @return void
      */
-    function kirbylog($content, string $level = 'info'): void
+    function kirbylog($content, ?string $level = null): void
     {
+        $level = $level ?? option('johannschopplich.kirbylog.defaultLevel', 'INFO');
         $level = strtoupper($level);
+
         $defaultLevels = [
             'DEBUG',
             'INFO',
