@@ -1,0 +1,40 @@
+{
+  "name": "johannschopplich/kirbylog",
+  "description": "Straightforward, Kirby-esque way to log content",
+  "type": "kirby-plugin",
+  "keywords": [
+    "getkirby",
+    "kirby",
+    "logger",
+    "log"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Johann Schopplich",
+      "email": "pkg@johannschopplich.com",
+      "homepage": "https://johannschopplich.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.4.0",
+    "getkirby/composer-installer": "^1.2"
+  },
+  "require-dev": {
+    "getkirby/cms": "^3.0",
+    "phpunit/phpunit": "^9"
+  },
+  "files": [
+    "helpers.php"
+  ],
+  "scripts": {
+    "dist": "composer install --no-dev --optimize-autoloader",
+    "test": "phpunit"
+  },
+  "config": {
+    "optimize-autoloader": true
+  },
+  "extra": {
+    "kirby-cms-path": "tests/kirby"
+  }
+}
