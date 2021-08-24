@@ -5,7 +5,6 @@ declare(strict_types=1);
 require dirname(__DIR__) . '/src/helpers.php';
 
 use Kirby\Cms\App;
-use Kirby\Data\Json;
 use Kirby\Toolkit\F;
 use PHPUnit\Framework\TestCase;
 
@@ -28,6 +27,9 @@ final class LogTest extends TestCase
         ]);
 
         $this->logPath = $this->kirby->root('logs') . '/' . option('johannschopplich.kirbylog.filename');
+
+        // Remove log from previous test iterations
+        F::remove($this->logPath);
     }
 
     private function getLastLogLine(): string
@@ -36,7 +38,7 @@ final class LogTest extends TestCase
         return $data[count($data) - 1];
     }
 
-    private function assertLastLogLine($content, string $level = 'info'): void
+    private function assertLastLogLine($content): void
     {
         $result = str_ends_with(
             rtrim($this->getLastLogLine(), "\n"),
@@ -68,9 +70,14 @@ final class LogTest extends TestCase
 
     public function testCanLogArray(): void
     {
-        $content = ['getkirby', 'kirby', 'cms'];
+        $content = ['getkirby', 'cms'];
         kirbylog($content);
-        $this->assertLastLogLine(Json::encode($content));
+        $this->assertTrue(
+            str_contains(
+                F::read($this->logPath),
+                "INFO [\n    \"getkirby\",\n    \"cms\"\n]"
+            )
+        );
     }
 
     public function testCustomLogLevel(): void
@@ -84,7 +91,7 @@ final class LogTest extends TestCase
     public function testCustomLogLevelCase(): void
     {
         $content = 'something went wrong';
-        $level = 'ERROR';
+        $level = 'error';
         kirbylog($content, $level);
         $this->assertLastLogLine($content, $level);
     }
@@ -92,9 +99,6 @@ final class LogTest extends TestCase
     public function testLogLevelNotFound(): void
     {
         $this->expectException(UnexpectedValueException::class);
-
-        $content = 'generic message';
-        $level = 'NOT_A_LEVEL';
-        kirbylog($content, $level);
+        kirbylog('generic message', 'undefined');
     }
 }

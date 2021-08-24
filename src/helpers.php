@@ -1,6 +1,5 @@
 <?php
 
-use Kirby\Data\Json;
 use Kirby\Toolkit\F;
 
 if (!function_exists('kirbylog')) {
@@ -35,7 +34,7 @@ if (!function_exists('kirbylog')) {
         }
 
         if (is_array($content) || is_object($content)) {
-            $content = Json::encode($content);
+            $content = json_encode($content, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
         }
 
         $dir = option('johannschopplich.kirbylog.dir', kirby()->root('logs'));
