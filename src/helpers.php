@@ -12,9 +12,7 @@ if (!function_exists('kirbylog')) {
      */
     function kirbylog($content, ?string $level = null): void
     {
-        $level = $level ?? option('johannschopplich.kirbylog.defaultLevel', 'INFO');
-        $level = strtoupper($level);
-
+        $level = strtoupper($level ?? option('johannschopplich.kirbylog.defaultLevel', 'info'));
         $defaultLevels = [
             'DEBUG',
             'INFO',
