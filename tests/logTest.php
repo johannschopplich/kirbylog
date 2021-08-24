@@ -38,14 +38,13 @@ final class LogTest extends TestCase
         return $data[count($data) - 1];
     }
 
-    private function assertLastLogLine($content): void
+    private function assertLastLogLine($content, string $level = 'info'): void
     {
-        $result = str_ends_with(
-            rtrim($this->getLastLogLine(), "\n"),
-            (string) $content
+        $raw = strtoupper($level) . ' ' . (string) $content;
+        $logged = rtrim($this->getLastLogLine(), "\n");
+        $this->assertTrue(
+            str_ends_with($logged, $raw)
         );
-
-        $this->assertTrue($result);
     }
 
     public function testLogExists(): void
