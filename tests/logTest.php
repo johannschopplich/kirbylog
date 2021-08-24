@@ -42,9 +42,7 @@ final class LogTest extends TestCase
     {
         $raw = strtoupper($level) . ' ' . (string) $content;
         $logged = rtrim($this->getLastLogLine(), "\n");
-        $this->assertTrue(
-            str_ends_with($logged, $raw)
-        );
+        $this->assertStringContainsString($raw, $logged);
     }
 
     public function testLogExists(): void
@@ -71,11 +69,9 @@ final class LogTest extends TestCase
     {
         $content = ['getkirby', 'cms'];
         kirbylog($content);
-        $this->assertTrue(
-            str_contains(
-                F::read($this->logPath),
-                "INFO [\n    \"getkirby\",\n    \"cms\"\n]"
-            )
+        $this->assertStringContainsString(
+            "INFO [\n    \"getkirby\",\n    \"cms\"\n]",
+            F::read($this->logPath)
         );
     }
 
