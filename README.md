@@ -73,6 +73,18 @@ Generated log file:
 | `defaultLevel` | `info` | `string` | Default logging level to use. Doesn't need to be case sensitive.
 | `levels` | [Source reference](https://github.com/johannschopplich/kirbylog/blob/main/src/helpers.php#L16) | `array` | List of logging levels. By default, `kirbylog` supports the logging levels described by [RFC 5424](http://tools.ietf.org/html/rfc5424) |
 
+Configuration example for your `site/config/config.php` file:
+
+```php
+return [
+    'johannschopplich' => [
+        'kirbylog' => [
+            'filename' => 'test.log'
+        ]
+    ]
+]
+```
+
 ## Alternatives
 
 - [bnomei/kirby3-monolog](https://github.com/bnomei/kirby3-monolog) – Use Monolog to log data to files, databases, create notifications etc.
