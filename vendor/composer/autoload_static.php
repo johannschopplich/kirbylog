@@ -6,6 +6,10 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit4bd10244afea621b6bffc2a3cc72f36d
 {
+    public static $files = array (
+        '445fbbe1258bd02c9f32aeab4a88efe9' => __DIR__ . '/../..' . '/src/helpers/kirbylog.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
         'K' => 
         array (
