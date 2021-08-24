@@ -12,8 +12,7 @@ if (!function_exists('kirbylog')) {
      */
     function kirbylog($content, ?string $level = null): void
     {
-        $level = strtoupper($level ?? option('johannschopplich.kirbylog.defaultLevel', 'info'));
-        $defaultLevels = [
+        $logLevels = option('johannschopplich.kirbylog.levels', [
             'DEBUG',
             'INFO',
             'NOTICE',
@@ -22,11 +21,12 @@ if (!function_exists('kirbylog')) {
             'CRITICAL',
             'ALERT',
             'EMERGENCY'
-        ];
+        ]);
 
+        $level = strtoupper($level ?? option('johannschopplich.kirbylog.defaultLevel', 'info'));
         if (
             option('debug') &&
-            !in_array($level, option('johannschopplich.kirbylog.levels', $defaultLevels))
+            !in_array($level, $logLevels)
         ) {
             throw new UnexpectedValueException("Level \"{$level}\" is not part of the logging levels described");
         }
