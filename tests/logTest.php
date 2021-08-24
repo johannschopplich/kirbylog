@@ -27,42 +27,32 @@ final class LogTest extends TestCase
         ]);
 
         $this->logPath = $this->kirby->root('logs') . '/' . option('johannschopplich.kirbylog.filename');
-
-        // Remove log from previous test iterations
-        F::remove($this->logPath);
     }
 
-    private function getLastLogLine(): string
+    private function assertLogLine($content, string $level = 'info'): void
     {
-        $data = file($this->logPath);
-        return $data[count($data) - 1];
-    }
-
-    private function assertLastLogLine($content, string $level = 'info'): void
-    {
-        $raw = strtoupper($level) . ' ' . (string) $content;
-        $logged = rtrim($this->getLastLogLine(), "\n");
-        $this->assertStringContainsString($raw, $logged);
+        $raw = '] ' . strtoupper($level) . ' ' . $content . "\n";
+        $this->assertStringContainsString($raw, F::read($this->logPath));
     }
 
     public function testLogExists(): void
     {
-        kirbylog('first test');
+        kirbylog('test log exists');
         $this->assertTrue(F::exists($this->logPath));
     }
 
     public function testCanLogString(): void
     {
-        $content = 'generic message';
+        $content = 'test can log string';
         kirbylog($content);
-        $this->assertLastLogLine($content);
+        $this->assertLogLine($content);
     }
 
     public function testCanLogInteger(): void
     {
         $content = 403;
         kirbylog($content);
-        $this->assertLastLogLine($content);
+        $this->assertLogLine($content);
     }
 
     public function testCanLogArray(): void
@@ -77,23 +67,23 @@ final class LogTest extends TestCase
 
     public function testCustomLogLevel(): void
     {
-        $content = 'something went wrong';
+        $content = 'test custom log level';
         $level = 'error';
         kirbylog($content, $level);
-        $this->assertLastLogLine($content, $level);
+        $this->assertLogLine($content, $level);
     }
 
     public function testCustomLogLevelCase(): void
     {
-        $content = 'something went wrong';
+        $content = 'test custom log level case';
         $level = 'error';
         kirbylog($content, $level);
-        $this->assertLastLogLine($content, $level);
+        $this->assertLogLine($content, $level);
     }
 
     public function testLogLevelNotFound(): void
     {
         $this->expectException(UnexpectedValueException::class);
-        kirbylog('generic message', 'undefined');
+        kirbylog('test undefined log level', 'undefined');
     }
 }
