@@ -3,7 +3,6 @@
   <testsuites>
     <testsuite name="helpers">
       <directory suffix="Test.php">./tests</directory>
-      <exclude>./tests/kirby</exclude>
     </testsuite>
   </testsuites>
 </phpunit>
