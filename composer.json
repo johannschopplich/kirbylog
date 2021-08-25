@@ -32,6 +32,6 @@
     "optimize-autoloader": true
   },
   "extra": {
-    "kirby-cms-path": "tests/kirby"
+    "kirby-cms-path": "tests/fixtures/kirby"
   }
 }

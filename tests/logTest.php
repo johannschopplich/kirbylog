@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-require dirname(__DIR__) . '/src/helpers/kirbylog.php';
-
 use Kirby\Cms\App;
 use Kirby\Toolkit\F;
 use PHPUnit\Framework\TestCase;
