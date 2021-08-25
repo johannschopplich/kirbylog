@@ -1,3 +1,4 @@
 .DS_Store
 *.cache
-/tests/site/logs/
+/tests/site/logs
+/vendor

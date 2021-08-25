@@ -24,11 +24,6 @@
     "getkirby/cms": "^3.0",
     "phpunit/phpunit": "^9"
   },
-  "autoload": {
-    "files": [
-      "src/helpers/kirbylog.php"
-    ]
-  },
   "scripts": {
     "dist": "composer install --no-dev --optimize-autoloader",
     "test": "phpunit"
