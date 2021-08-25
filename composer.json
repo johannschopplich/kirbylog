@@ -1,6 +1,6 @@
 {
   "name": "johannschopplich/kirbylog",
-  "description": "Straightforward, Kirby-esque way to log content",
+  "description": "Zero-dependency global `kirbylog()` helper for any content",
   "type": "kirby-plugin",
   "keywords": [
     "getkirby",
