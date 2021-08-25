@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit
-  bootstrap="tests/fixtures/bootstrap.php"
-  colors="true"
-  verbose="true"
->
+<phpunit colors="true" verbose="true">
   <testsuites>
     <testsuite name="helpers">
       <directory suffix="Test.php">./tests</directory>
