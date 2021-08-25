@@ -1,7 +1,5 @@
 <?php
 
-use Kirby\Toolkit\F;
-
 if (!function_exists('kirbylog')) {
     /**
      * Logs content to file
@@ -28,7 +26,7 @@ if (!function_exists('kirbylog')) {
             option('debug') &&
             !in_array($level, $logLevels)
         ) {
-            throw new UnexpectedValueException("Level \"{$level}\" is not part of the logging levels described");
+            throw new \UnexpectedValueException("Level \"{$level}\" is not part of the logging levels described");
         }
 
         if (is_array($content) || is_object($content)) {
@@ -42,7 +40,7 @@ if (!function_exists('kirbylog')) {
             $dir = $dir();
         }
 
-        F::append(
+        \Kirby\Toolkit\F::append(
             $dir . '/' . $filename,
             '[' . strftime('%Y-%m-%d %H:%M:%S') . '] ' . $level . ' ' . $content . "\n"
         );
