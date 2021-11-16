@@ -1,4 +1,5 @@
 .DS_Store
 *.cache
-/tests/fixtures/site/logs
-/vendor
+composer.lock
+tests/fixtures/site/logs
+vendor
