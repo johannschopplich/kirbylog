@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use Kirby\Cms\App;
-use Kirby\Toolkit\F;
+use Kirby\Filesystem\F;
 use PHPUnit\Framework\TestCase;
 
 final class LogTest extends TestCase
