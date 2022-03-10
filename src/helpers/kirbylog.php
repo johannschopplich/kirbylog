@@ -34,7 +34,7 @@ if (!function_exists('kirbylog')) {
         }
 
         $dir = option('johannschopplich.kirbylog.dir', kirby()->root('logs'));
-        $filename = option('johannschopplich.kirbylog.filename', strftime('%Y-%m-%d') . '.log');
+        $filename = option('johannschopplich.kirbylog.filename', date('Y-m-d') . '.log');
 
         if (is_callable($dir)) {
             $dir = $dir();
@@ -42,7 +42,7 @@ if (!function_exists('kirbylog')) {
 
         \Kirby\Toolkit\F::append(
             $dir . '/' . $filename,
-            '[' . strftime('%Y-%m-%d %H:%M:%S') . '] ' . $level . ' ' . $content . "\n"
+            '[' . date('Y-m-d H:i:s') . '] ' . $level . ' ' . $content . "\n"
         );
     }
 }

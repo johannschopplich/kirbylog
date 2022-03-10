@@ -31,7 +31,10 @@
     "test": "phpunit"
   },
   "config": {
-    "optimize-autoloader": true
+    "optimize-autoloader": true,
+    "allow-plugins": {
+      "getkirby/composer-installer": true
+    }
   },
   "extra": {
     "kirby-cms-path": "tests/fixtures/kirby"

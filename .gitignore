@@ -1,5 +1,6 @@
 .DS_Store
 *.cache
 composer.lock
+tests/fixtures/kirby
 tests/fixtures/site/logs
 vendor
