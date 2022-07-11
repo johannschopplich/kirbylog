@@ -92,4 +92,4 @@ return [
 
 ## License
 
-MIT
+[MIT](./LICENSE) License © 2022 [Johann Schopplich](https://github.com/johannschopplich)

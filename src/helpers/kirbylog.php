@@ -40,7 +40,7 @@ if (!function_exists('kirbylog')) {
             $dir = $dir();
         }
 
-        \Kirby\Toolkit\F::append(
+        \Kirby\Filesystem\F::append(
             $dir . '/' . $filename,
             '[' . date('Y-m-d H:i:s') . '] ' . $level . ' ' . $content . "\n"
         );
