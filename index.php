@@ -12,7 +12,10 @@ if (!function_exists('kirbylog')) {
      */
     function kirbylog($content, ?string $level = null): void
     {
-        $logLevels = option('johannschopplich.kirbylog.levels', [
+        $kirby = kirby();
+
+        $level = strtoupper($level ?? $kirby->option('johannschopplich.kirbylog.defaultLevel', 'info'));
+        $logLevels = $kirby->option('johannschopplich.kirbylog.levels', [
             'DEBUG',
             'INFO',
             'NOTICE',
@@ -23,9 +26,8 @@ if (!function_exists('kirbylog')) {
             'EMERGENCY'
         ]);
 
-        $level = strtoupper($level ?? option('johannschopplich.kirbylog.defaultLevel', 'info'));
         if (
-            option('debug') &&
+            $kirby->option('debug') &&
             !in_array($level, $logLevels)
         ) {
             throw new \UnexpectedValueException("Level \"{$level}\" is not part of the logging levels described");
@@ -35,8 +37,8 @@ if (!function_exists('kirbylog')) {
             $content = json_encode($content, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
         }
 
-        $dir = option('johannschopplich.kirbylog.dir', kirby()->root('logs'));
-        $filename = option('johannschopplich.kirbylog.filename', date('Y-m-d') . '.log');
+        $dir = $kirby->option('johannschopplich.kirbylog.dir', $kirby->root('logs'));
+        $filename = $kirby->option('johannschopplich.kirbylog.filename', date('Y-m-d') . '.log');
 
         if (is_callable($dir)) {
             $dir = $dir();
