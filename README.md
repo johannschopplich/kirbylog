@@ -66,21 +66,19 @@ Generated log file:
 
 > All options have to prefixed with `johannschopplich.kirbylog.` in your `config.php`.
 
-| Option | Default | Type | Description |
-| --- | --- | --- | --- |
-| `dir` | `fn () => kirby()->root('logs')` | `string` or `function` | Root directory for your logs. Note: Wrap `kirby()` calls in a function, because Kirby hasn't initialized in `config.php` yet. |
-| `filename` | `date('Y-m-d') . '.log'` | `string` | Filename to write logged content to.
-| `defaultLevel` | `info` | `string` | Default logging level to use. Doesn't need to be case sensitive.
-| `levels` | [Source reference](https://github.com/johannschopplich/kirbylog/blob/main/src/helpers/kirbylog.php#L14) | `array` | List of logging levels. By default, `kirbylog` supports the logging levels described by [RFC 5424](http://tools.ietf.org/html/rfc5424). |
+| Option         | Default                                                                                                 | Type                   | Description                                                                                                                             |
+| -------------- | ------------------------------------------------------------------------------------------------------- | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| `dir`          | `fn () => kirby()->root('logs')`                                                                        | `string` or `function` | Root directory for your logs. Note: Wrap `kirby()` calls in a function, because Kirby hasn't initialized in `config.php` yet.           |
+| `filename`     | `date('Y-m-d') . '.log'`                                                                                | `string`               | Filename to write logged content to.                                                                                                    |
+| `defaultLevel` | `info`                                                                                                  | `string`               | Default logging level to use. Doesn't need to be case sensitive.                                                                        |
+| `levels`       | [Source reference](https://github.com/johannschopplich/kirbylog/blob/main/index.php#L15) | `array`                | List of logging levels. By default, `kirbylog` supports the logging levels described by [RFC 5424](http://tools.ietf.org/html/rfc5424). |
 
 Configuration example for your `site/config/config.php` file:
 
 ```php
 return [
-    'johannschopplich' => [
-        'kirbylog' => [
-            'filename' => 'test.log'
-        ]
+    'johannschopplich.kirbylog' => [
+        'filename' => 'test.log'
     ]
 ]
 ```
