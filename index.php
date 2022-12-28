@@ -10,7 +10,7 @@ if (!function_exists('kirbylog')) {
      * @param string|null $level Case-insensitive logging level.
      * @return void
      */
-    function kirbylog($content, ?string $level = null): void
+    function kirbylog($content, string|null $level = null): void
     {
         $kirby = kirby();
 
