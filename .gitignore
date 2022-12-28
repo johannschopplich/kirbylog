@@ -1,6 +1,13 @@
+# OS files
 .DS_Store
-*.cache
-composer.lock
-tests/fixtures/kirby
-tests/fixtures/site/logs
-vendor
+
+# Vendor files
+/node_modules
+/vendor
+
+# Cache and temporary files
+/.cache
+/.php-cs-fixer.cache
+/.phpunit.result.cache
+/tests/coverage
+/tests/*/tmp

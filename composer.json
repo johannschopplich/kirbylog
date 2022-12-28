@@ -2,7 +2,7 @@
   "name": "johannschopplich/kirbylog",
   "description": "Zero-dependency global `kirbylog()` helper for any content",
   "type": "kirby-plugin",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "keywords": [
     "getkirby",
     "kirby",
@@ -19,14 +19,15 @@
     }
   ],
   "require": {
-    "php": ">=7.4.0",
     "getkirby/composer-installer": "^1.2"
   },
   "require-dev": {
-    "getkirby/cms": "^3.7",
+    "friendsofphp/php-cs-fixer": "@stable",
+    "getkirby/cms": "^3.8",
     "phpunit/phpunit": "^9"
   },
   "scripts": {
+    "fix": "php-cs-fixer fix",
     "dist": "composer install --no-dev --optimize-autoloader",
     "test": "phpunit"
   },
