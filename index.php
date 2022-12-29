@@ -10,7 +10,7 @@ if (!function_exists('kirbylog')) {
     {
         $kirby = kirby();
 
-        $level = strtoupper($level || $kirby->option('johannschopplich.kirbylog.defaultLevel', 'info'));
+        $level = strtoupper($level ?? $kirby->option('johannschopplich.kirbylog.defaultLevel', 'info'));
         $logLevels = $kirby->option('johannschopplich.kirbylog.levels', [
             'DEBUG',
             'INFO',
