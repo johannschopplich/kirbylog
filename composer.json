@@ -2,7 +2,7 @@
   "name": "johannschopplich/kirbylog",
   "description": "Zero-dependency global `kirbylog()` helper for any content",
   "type": "kirby-plugin",
-  "version": "1.4.5",
+  "version": "1.4.6",
   "keywords": [
     "getkirby",
     "kirby",
