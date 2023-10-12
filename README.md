@@ -1,3 +1,5 @@
+![Kirbylog](./.github/kirbylog.png)
+
 # Kirbylog
 
 > The most simple, Kirby-esque way to log content to file.
@@ -9,10 +11,10 @@ Most of the time, I just want to log some string or array to a file. That's what
 kirbylog('Something happened');
 ```
 
-… will produce this example output `site/logs/2021-08-23.log`:
+… will produce this example output `site/logs/2023-08-23.log`:
 
 ```log
-[2021-08-23 09:28:04] INFO Something happened
+[2023-08-23 09:28:04] INFO Something happened
 ```
 
 ## Key features
@@ -24,21 +26,15 @@ kirbylog('Something happened');
 
 ## Installation
 
-### Download
-
-Download and copy this repository to `/site/plugins/kirbylog`.
-
-### Git submodule
-
-```bash
-git submodule add https://github.com/johannschopplich/kirbylog.git site/plugins/kirbylog
-```
-
 ### Composer
 
 ```bash
 composer require johannschopplich/kirbylog
 ```
+
+### Download
+
+Download and copy this repository to `/site/plugins/kirbylog`.
 
 ## Usage
 
@@ -59,18 +55,18 @@ kirbylog($response->code(), 'error');
 Generated log file:
 
 ```log
-[2021-08-23 12:43:56] ERROR 401
+[2023-08-23 12:43:56] ERROR 401
 ```
 
 ## Options
 
 > All options have to prefixed with `johannschopplich.kirbylog.` in your `config.php`.
 
-| Option         | Default                                                                                                 | Type                   | Description                                                                                                                             |
-| -------------- | ------------------------------------------------------------------------------------------------------- | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| `dir`          | `fn () => kirby()->root('logs')`                                                                        | `string` or `function` | Root directory for your logs. Note: Wrap `kirby()` calls in a function, because Kirby hasn't initialized in `config.php` yet.           |
-| `filename`     | `date('Y-m-d') . '.log'`                                                                                | `string`               | Filename to write logged content to.                                                                                                    |
-| `defaultLevel` | `info`                                                                                                  | `string`               | Default logging level to use. Doesn't need to be case sensitive.                                                                        |
+| Option         | Default                                                                                  | Type                   | Description                                                                                                                             |
+| -------------- | ---------------------------------------------------------------------------------------- | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| `dir`          | `fn () => kirby()->root('logs')`                                                         | `string` or `function` | Root directory for your logs. Note: Wrap `kirby()` calls in a function, because Kirby hasn't initialized in `config.php` yet.           |
+| `filename`     | `date('Y-m-d') . '.log'`                                                                 | `string`               | Filename to write logged content to.                                                                                                    |
+| `defaultLevel` | `info`                                                                                   | `string`               | Default logging level to use. Doesn't need to be case sensitive.                                                                        |
 | `levels`       | [Source reference](https://github.com/johannschopplich/kirbylog/blob/main/index.php#L15) | `array`                | List of logging levels. By default, `kirbylog` supports the logging levels described by [RFC 5424](http://tools.ietf.org/html/rfc5424). |
 
 Configuration example for your `site/config/config.php` file:
@@ -90,4 +86,4 @@ return [
 
 ## License
 
-[MIT](./LICENSE) License © 2022 [Johann Schopplich](https://github.com/johannschopplich)
+[MIT](./LICENSE) License © 2022-PRESENT [Johann Schopplich](https://github.com/johannschopplich)
