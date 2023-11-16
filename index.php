@@ -1,6 +1,8 @@
 <?php
 
-\Kirby\Cms\App::plugin('johannschopplich/kirbylog', []);
+use \Kirby\Cms\App;
+
+App::plugin('johannschopplich/kirbylog', []);
 
 if (!function_exists('kirbylog')) {
     /**
@@ -8,8 +10,7 @@ if (!function_exists('kirbylog')) {
      */
     function kirbylog(string|int|array $content, string|null $level = null): void
     {
-        $kirby = kirby();
-
+        $kirby = App::instance();
         $level = strtoupper($level ?? $kirby->option('johannschopplich.kirbylog.defaultLevel', 'info'));
         $logLevels = $kirby->option('johannschopplich.kirbylog.levels', [
             'DEBUG',
