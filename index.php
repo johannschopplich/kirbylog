@@ -1,6 +1,7 @@
 <?php
 
-use \Kirby\Cms\App;
+use Kirby\Cms\App;
+use Kirby\Filesystem\F;
 
 App::plugin('johannschopplich/kirbylog', []);
 
@@ -41,7 +42,7 @@ if (!function_exists('kirbylog')) {
             $dir = $dir();
         }
 
-        \Kirby\Filesystem\F::append(
+        F::append(
             $dir . '/' . $filename,
             '[' . date('Y-m-d H:i:s') . '] ' . $level . ' ' . $content . "\n"
         );

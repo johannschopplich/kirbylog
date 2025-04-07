@@ -2,7 +2,7 @@
 
 # Kirbylog
 
-> The most simple, Kirby-esque way to log content to file.
+The most simple, Kirby-esque way to log content to file.
 
 Most of the time, I just want to log some string or array to a file. That's what this plugin does. The given input:
 
