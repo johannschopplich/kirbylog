@@ -4,10 +4,10 @@
   "type": "kirby-plugin",
   "version": "1.4.7",
   "keywords": [
-    "getkirby",
     "kirby",
-    "logger",
-    "log"
+    "kirby-cms",
+    "kirby-plugin",
+    "logger"
   ],
   "license": "MIT",
   "homepage": "https://github.com/johannschopplich/kirbylog#readme",
