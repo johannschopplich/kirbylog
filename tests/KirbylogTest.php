@@ -74,6 +74,16 @@ final class KirbylogTest extends TestCase
     }
 
     #[Test]
+    public function substitutes_invalid_utf8_when_encoding(): void
+    {
+        $this->app();
+
+        kirbylog(['name' => "Caf\xE9"]);
+
+        $this->assertStringEndsWith("] INFO {\n    \"name\": \"Caf\u{FFFD}\"\n}\n", $this->log());
+    }
+
+    #[Test]
     public function uppercases_the_passed_level(): void
     {
         $this->app(['debug' => true]);

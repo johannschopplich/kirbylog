@@ -33,7 +33,7 @@ if (!function_exists('kirbylog')) {
         }
 
         if (is_array($content) || is_object($content)) {
-            $content = json_encode($content, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+            $content = json_encode($content, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_INVALID_UTF8_SUBSTITUTE);
         }
 
         $dir = $kirby->option('johannschopplich.kirbylog.dir') ?? $kirby->root('logs');
