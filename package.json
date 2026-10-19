@@ -1,7 +1,13 @@
 {
-  "private": true,
+  "type": "module",
   "version": "1.4.7",
+  "private": true,
+  "packageManager": "pnpm@11.25.0",
   "scripts": {
-    "release": "npx -y bumpp --all"
+    "release": "bumpp --all --execute \"npx zx scripts/pre-release.mjs\""
+  },
+  "devDependencies": {
+    "bumpp": "^12.3.0",
+    "zx": "^8.8.5"
   }
 }

@@ -7,7 +7,7 @@ App::plugin('johannschopplich/kirbylog', []);
 
 if (!function_exists('kirbylog')) {
     /**
-     * Logs content to file
+     * Logs content to file.
      */
     function kirbylog(string|int|array $content, string|null $level = null): void
     {
