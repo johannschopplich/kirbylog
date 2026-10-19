@@ -23,11 +23,12 @@ final class KirbylogTest extends TestCase
         Dir::remove(self::TMP);
     }
 
-    private function app(array $options = []): App
+    private function app(array $options = [], array $site = []): App
     {
         return new App([
             'roots' => ['index' => self::TMP],
-            'options' => $options
+            'options' => $options,
+            'site' => $site
         ]);
     }
 
@@ -71,6 +72,72 @@ final class KirbylogTest extends TestCase
             "] INFO {\n    \"url\": \"https://getkirby.com/\",\n    \"name\": \"Kirby\"\n}\n",
             $this->log()
         );
+    }
+
+    /** @return array<string, array{0: mixed, 1: string}> */
+    public static function scalarCases(): array
+    {
+        return [
+            'null' => [null, 'null'],
+            'true' => [true, 'true'],
+            'false' => [false, 'false'],
+            'float' => [1.5, '1.5']
+        ];
+    }
+
+    #[Test]
+    #[DataProvider('scalarCases')]
+    public function logs_other_scalars_as_json(mixed $content, string $expected): void
+    {
+        $this->app();
+
+        kirbylog($content);
+
+        $this->assertStringEndsWith("] INFO {$expected}\n", $this->log());
+    }
+
+    #[Test]
+    public function logs_a_stringable_object_as_its_string(): void
+    {
+        $app = $this->app([], [
+            'children' => [
+                ['slug' => 'home', 'content' => ['title' => 'Home']]
+            ]
+        ]);
+
+        kirbylog($app->page('home')->title());
+
+        $this->assertStringEndsWith("] INFO Home\n", $this->log());
+    }
+
+    #[Test]
+    public function logs_any_other_object_as_json(): void
+    {
+        $this->app();
+
+        kirbylog((object)['status' => 'paid']);
+
+        $this->assertStringEndsWith("] INFO {\n    \"status\": \"paid\"\n}\n", $this->log());
+    }
+
+    #[Test]
+    public function logs_a_value_json_cannot_encode_with_print_r(): void
+    {
+        $this->app();
+
+        kirbylog(['ratio' => INF]);
+
+        $this->assertStringEndsWith("] INFO Array\n(\n    [ratio] => INF\n)\n", $this->log());
+    }
+
+    #[Test]
+    public function logs_a_resource_with_print_r(): void
+    {
+        $this->app();
+
+        kirbylog(fopen('php://memory', 'r'));
+
+        $this->assertMatchesRegularExpression('/\] INFO Resource id #\d+\n$/', $this->log());
     }
 
     #[Test]

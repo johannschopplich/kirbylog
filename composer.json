@@ -1,6 +1,6 @@
 {
   "name": "johannschopplich/kirbylog",
-  "description": "Zero-dependency global `kirbylog()` helper for any content",
+  "description": "Log any value to a daily file from anywhere in Kirby CMS",
   "type": "kirby-plugin",
   "version": "1.4.7",
   "keywords": [
