@@ -13,7 +13,7 @@ if (!function_exists('kirbylog')) {
     {
         $kirby = App::instance();
         $level = strtoupper($level ?? $kirby->option('johannschopplich.kirbylog.defaultLevel') ?? 'info');
-        $logLevels = $kirby->option('johannschopplich.kirbylog.levels') ?? [
+        $logLevels = array_map('strtoupper', $kirby->option('johannschopplich.kirbylog.levels') ?? [
             // RFC 5424
             'DEBUG',
             'INFO',
@@ -23,11 +23,11 @@ if (!function_exists('kirbylog')) {
             'CRITICAL',
             'ALERT',
             'EMERGENCY'
-        ];
+        ]);
 
         if (
             $kirby->option('debug') &&
-            !in_array($level, $logLevels)
+            !in_array($level, $logLevels, true)
         ) {
             throw new \UnexpectedValueException("Level \"{$level}\" is not part of the logging levels described");
         }

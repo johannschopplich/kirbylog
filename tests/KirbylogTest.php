@@ -128,6 +128,19 @@ final class KirbylogTest extends TestCase
     }
 
     #[Test]
+    public function matches_configured_levels_in_any_case(): void
+    {
+        $this->app([
+            'debug' => true,
+            'johannschopplich.kirbylog' => ['levels' => ['Audit']]
+        ]);
+
+        kirbylog('Role changed', 'AUDIT');
+
+        $this->assertStringEndsWith("] AUDIT Role changed\n", $this->log());
+    }
+
+    #[Test]
     public function writes_an_unknown_level_outside_debug_mode(): void
     {
         $this->app();
