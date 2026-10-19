@@ -12,8 +12,9 @@ if (!function_exists('kirbylog')) {
     function kirbylog(string|int|array $content, string|null $level = null): void
     {
         $kirby = App::instance();
-        $level = strtoupper($level ?? $kirby->option('johannschopplich.kirbylog.defaultLevel', 'info'));
-        $logLevels = $kirby->option('johannschopplich.kirbylog.levels', [
+        $level = strtoupper($level ?? $kirby->option('johannschopplich.kirbylog.defaultLevel') ?? 'info');
+        $logLevels = $kirby->option('johannschopplich.kirbylog.levels') ?? [
+            // RFC 5424
             'DEBUG',
             'INFO',
             'NOTICE',
@@ -22,7 +23,7 @@ if (!function_exists('kirbylog')) {
             'CRITICAL',
             'ALERT',
             'EMERGENCY'
-        ]);
+        ];
 
         if (
             $kirby->option('debug') &&
@@ -35,8 +36,8 @@ if (!function_exists('kirbylog')) {
             $content = json_encode($content, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
         }
 
-        $dir = $kirby->option('johannschopplich.kirbylog.dir', $kirby->root('logs'));
-        $filename = $kirby->option('johannschopplich.kirbylog.filename', date('Y-m-d') . '.log');
+        $dir = $kirby->option('johannschopplich.kirbylog.dir') ?? $kirby->root('logs');
+        $filename = $kirby->option('johannschopplich.kirbylog.filename') ?? date('Y-m-d') . '.log';
 
         if (is_callable($dir)) {
             $dir = $dir();

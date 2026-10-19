@@ -5,6 +5,7 @@ declare(strict_types = 1);
 use Kirby\Cms\App;
 use Kirby\Filesystem\Dir;
 use Kirby\Filesystem\F;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\PreserveGlobalState;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 use PHPUnit\Framework\Attributes\Test;
@@ -101,6 +102,29 @@ final class KirbylogTest extends TestCase
         $this->expectExceptionMessage('Level "UNDEFINED" is not part of the logging levels described');
 
         kirbylog('Nope', 'undefined');
+    }
+
+    /** @return array<string, array{0: array}> */
+    public static function levelsConfigCases(): array
+    {
+        return [
+            'plugin namespace' => [['johannschopplich.kirbylog' => ['levels' => ['AUDIT']]]],
+            'flat key' => [['johannschopplich.kirbylog.levels' => ['AUDIT']]],
+            'nested arrays' => [['johannschopplich' => ['kirbylog' => ['levels' => ['AUDIT']]]]]
+        ];
+    }
+
+    #[Test]
+    #[DataProvider('levelsConfigCases')]
+    public function replaces_the_default_levels_with_the_configured_ones(array $options): void
+    {
+        $this->app(['debug' => true, ...$options]);
+
+        kirbylog('Role changed', 'audit');
+        $this->assertStringEndsWith("] AUDIT Role changed\n", $this->log());
+
+        $this->expectException(UnexpectedValueException::class);
+        kirbylog('Not configured', 'error');
     }
 
     #[Test]
