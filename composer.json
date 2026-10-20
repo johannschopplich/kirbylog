@@ -2,7 +2,7 @@
   "name": "johannschopplich/kirbylog",
   "description": "Log any value to a daily file from anywhere in Kirby CMS",
   "type": "kirby-plugin",
-  "version": "1.4.7",
+  "version": "1.5.0",
   "keywords": [
     "kirby",
     "kirby-cms",
