@@ -69,7 +69,7 @@ The default levels are the eight described by [RFC 5424](https://www.rfc-editor.
 
 ## Requirements
 
-- Kirby 5
+- Kirby 5 or 6
 
 ## Installation
 
