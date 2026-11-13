@@ -53,6 +53,12 @@ kirbylog(['order' => 1042, 'status' => 'paid']);
 
 A value JSON can't encode, such as `INF` or a resource, is written with `print_r()` instead.
 
+An object is encoded with its public properties only, so `$page->content()` logs as `{}`. Call `->toArray()` to log its data:
+
+```php
+kirbylog($page->content()->toArray());
+```
+
 ### 🔢 Logging Levels
 
 Pass a level as the second argument, in any case. Without one, the entry is logged as `INFO`:
@@ -81,18 +87,18 @@ composer require johannschopplich/kirbylog
 
 ### Manual Installation
 
-Download and copy this repository to `/site/plugins/kirbylog`.
+Download a [release](https://github.com/johannschopplich/kirbylog/releases) and extract it to `/site/plugins/kirbylog`.
 
 ## Options
 
 All options are namespaced under `johannschopplich.kirbylog`:
 
-| Option         | Default               | Description                                                                                 |
-| -------------- | --------------------- | ------------------------------------------------------------------------------------------- |
-| `dir`          | `site/logs`           | Folder to write logs to. A closure is called on each log, so it can use `kirby()`.          |
-| `filename`     | `<Y-m-d>.log`         | Name of the log file. A fixed name collects every entry in one file instead of one per day. |
-| `defaultLevel` | `info`                | Level for calls without one, in any case.                                                   |
-| `levels`       | The 8 RFC 5424 levels | Levels allowed in debug mode, in any case. Your list replaces the default one.              |
+| Option         | Default               | Description                                                                                                   |
+| -------------- | --------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `dir`          | `site/logs`           | Folder to write logs to. A closure is called on each log, so it can use `kirby()`.                            |
+| `filename`     | `<Y-m-d>.log`         | Name of the log file. A fixed name collects every entry in one file instead of one per day.                   |
+| `defaultLevel` | `info`                | Level for calls without one, in any case.                                                                     |
+| `levels`       | The 8 RFC 5424 levels | Levels allowed in debug mode, in any case. Your list replaces the default one, so include the `defaultLevel`. |
 
 Example `config.php`:
 
