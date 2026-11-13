@@ -51,8 +51,6 @@ kirbylog(['order' => 1042, 'status' => 'paid']);
 }
 ```
 
-A value JSON can't encode, such as `INF` or a resource, is written with `print_r()` instead.
-
 An object is encoded with its public properties only, so `$page->content()` logs as `{}`. Call `->toArray()` to log its data:
 
 ```php
