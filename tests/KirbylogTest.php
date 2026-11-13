@@ -251,4 +251,16 @@ final class KirbylogTest extends TestCase
             F::read(self::TMP . '/custom-logs/' . date('Y-m-d') . '.log')
         );
     }
+
+    #[Test]
+    public function treats_a_dir_of_getcwd_as_a_path(): void
+    {
+        $this->app(['johannschopplich.kirbylog' => ['dir' => 'getcwd']]);
+        Dir::make(self::TMP);
+        chdir(self::TMP);
+
+        kirbylog('Relative');
+
+        $this->assertStringEndsWith("] INFO Relative\n", F::read(self::TMP . '/getcwd/' . date('Y-m-d') . '.log'));
+    }
 }

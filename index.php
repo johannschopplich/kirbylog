@@ -41,7 +41,7 @@ if (!function_exists('kirbylog')) {
         $dir = $kirby->option('johannschopplich.kirbylog.dir') ?? $kirby->root('logs');
         $filename = $kirby->option('johannschopplich.kirbylog.filename') ?? date('Y-m-d') . '.log';
 
-        if (is_callable($dir)) {
+        if ($dir instanceof Closure) {
             $dir = $dir();
         }
 
